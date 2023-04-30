@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         val buttCount = findViewById<Button>(R.id.butt_count)
         val buttRandom = findViewById<Button>(R.id.butt_random)
         val txvCnt = findViewById<TextView>(R.id.txv_count)
-        val toast = Toast.makeText(applicationContext, "Toast", Toast.LENGTH_SHORT)
+
 
         buttToast.setOnClickListener {
-            toast.show()
+            Toast.makeText(applicationContext, "Toast", Toast.LENGTH_SHORT).show()
         }
         var numCnt = 0
         buttCount.setOnClickListener {
@@ -27,9 +27,15 @@ class MainActivity : AppCompatActivity() {
             txvCnt.text = numCnt.toString()
         }
         val intent = Intent(this, RandomActivity::class.java)
-        intent.putExtra("numCnt", numCnt)
+
         buttRandom.setOnClickListener {
-            startActivity(intent)
+            if (numCnt == 0){ //@Random, from 0 until 0면 에러 발생
+                Toast.makeText(applicationContext, "Counter is Zero.", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                intent.putExtra("numCnt", numCnt)
+                startActivity(intent)
+            }
         }
     }
 }
