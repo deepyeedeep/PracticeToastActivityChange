@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val buttCount = findViewById<Button>(R.id.butt_count)
         val buttRandom = findViewById<Button>(R.id.butt_random)
         val txvCnt = findViewById<TextView>(R.id.txv_count)
-
+        val intent = Intent(this, RandomActivity::class.java)
 
         buttToast.setOnClickListener {
             Toast.makeText(applicationContext, "Toast", Toast.LENGTH_SHORT).show()
@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
             numCnt++
             txvCnt.text = numCnt.toString()
         }
-        val intent = Intent(this, RandomActivity::class.java)
 
         buttRandom.setOnClickListener {
             if (numCnt == 0){ //@Random, from 0 until 0면 에러 발생
