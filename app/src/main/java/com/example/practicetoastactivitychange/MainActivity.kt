@@ -26,6 +26,12 @@ class MainActivity : AppCompatActivity() {
             numCnt++
             txvCnt.text = numCnt.toString()
         }
+        buttCount.setOnLongClickListener {
+            numCnt = 0
+            txvCnt.text = numCnt.toString()
+            Toast.makeText(applicationContext, "Counter Initialize", Toast.LENGTH_SHORT).show()
+            return@setOnLongClickListener (true)
+        }
 
         buttRandom.setOnClickListener {
             if (numCnt == 0){ //@Random, from 0 until 0면 에러 발생
